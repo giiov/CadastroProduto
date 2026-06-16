@@ -28,13 +28,58 @@ module.exports = function (app) {
   });
 
 
-  app.post("/produtos/teste", function (request, response) {
+  app.post("/produtos", function (request, response) {
     
-    var nome = request.body.nome;
-    var preco = request.body.preco;
-    var quant = request.body.quant;
+    var novoProduto = {
+      id: produtos.length + 1,
+      nome: request.body.nome,
+      preco: request.body.preco,
+      quantidade: request.body.quant
+    };
+    produtos.push(novoProduto);
 
-    response.render("produtos/resultado", {nome,preco,quant});
+    response.redirect("/produtos");
+
+  });
+
+  app.get("/produtos/excluir/:id", function (request, response) {
+    
+    var id = request.params.id;
+
+    var index = produtos.findIndex(function (produto) {
+      return produto.id == id;
+    });
+
+    produtos.splice(index, 1);
+
+    response.redirect("/produtos");
+  });
+
+  app.get("/produtos/alterar/:id", function (request, response) {
+    
+    var id = request.params.id;
+
+    var produtoSelecionado = produtos.find(function (produto) {
+      return produto.id == id;
+    });
+
+    response.render("produtos/editar", {produto: produtoSelecionado});
+
+  });
+
+  app.post("/produtos/alterar", function (request, response) {
+
+    var id = request.body.id;
+
+    var produto = produtos.find(function (produto) {
+      return produto.id == id;
+    });
+
+    produto.nome = request.body.nome;
+    produto.preco = request.body.preco;
+    produto.quantidade = request.body.quantidade;
+
+    response.redirect("/produtos");
 
   });
 

@@ -1,12 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Produtos</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
 <h2>Produtos</h2>
 
-<table border="1">
+<table>
 <tr>
     <th>ID</th>
     <th>Nome</th>
     <th>Preço</th>
     <th>Quantidade</th>
+    
     <th>Detalhe</th>
+    <th>Alterar</th>
+    <th>Excluir</th>
 </tr>
 
 <% listaProdutos.forEach(function(produto) { %>
@@ -20,10 +35,23 @@
     <% }else{%>
         <td><%= produto.quantidade %></td>
     <%}%>
+
     <td>
         <a href="/produtos/detalhe/<%= produto.id %>">Ver</a>
+    </td>
+
+    <td>
+        <a href="/produtos/alterar/<%= produto.id %>">Alterar</a>
+    </td>
+
+    <td>
+        <a href="/produtos/excluir/<%= produto.id %>" onclick="return confirm('Deseja excluir?')">Excluir</a>
     </td>
 </tr>
 <% }); %>
 
 </table>
+
+</body>
+
+</html>

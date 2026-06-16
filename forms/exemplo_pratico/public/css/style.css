@@ -21,7 +21,7 @@ label {
 }
 
 input {
-    width: 400;
+    width: 400px;
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 15px;
@@ -52,4 +52,53 @@ p {
     box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
     margin-bottom: 10px;
     font-size: 16px;
+}
+
+table {
+    width: 90%;
+    margin-top: 30px;
+    background-color: white;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+
+th {
+    background-color: #e546d5;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+}
+
+
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+
+tr:hover {
+    background-color: #fceafa;
+}
+
+
+a {
+    color: #e546d5;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+a:hover {
+    color: #b638ca;
+    text-decoration: underline;
+}
+
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
 }
